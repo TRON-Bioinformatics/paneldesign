@@ -1,2 +1,6 @@
 ^paneldesign\.Rproj$
 ^\.Rproj\.user$
+^LICENSE\.md$
+^README\.Rmd$
+^\.gitlab-ci\.yml$
+^data-raw$
