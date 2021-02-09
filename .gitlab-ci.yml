@@ -45,6 +45,7 @@ pages:
         - testing
     script:
         - ls
+        - R -e "pkgdown::build_site()"
     artifacts:
         paths:
             - public
