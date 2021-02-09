@@ -3,7 +3,7 @@
 #'
 #' @param reg_to_patient_mut A data.frame like object from `panel_to_patient()`
 #'  with all regions `reg_id` linked to patients `patient_id` via mutations `mut_id`.
-#'  It should additinoally countain the following columns:
+#'  It should additionally contain the following columns:
 #'    - `reg_chr`
 #'    - `reg_start` one-based
 #'    - `reg_end`  one-based
