@@ -13,16 +13,16 @@ select_greedy <- function(set_df, mut_col = "mut_id",
                           sample_col = "patient_id"){
 
   mut_set_cover <- set_df %>%
-    dplyr::select(all_of(c(mut_col, sample_col))) %>%
+    dplyr::select(dplyr::all_of(c(mut_col, sample_col))) %>%
     RcppGreedySetCover::greedySetCover(FALSE) %>%
-    as_tibble()
+    dplyr::as_tibble()
 
   mut_set_cover %>%
     dplyr::group_by_at(mut_col) %>%
     dplyr::summarize(
       n = dplyr::n()
     ) %>%
-    dplyr::arrange(desc(n)) %>%
+    dplyr::arrange(dplyr::desc(n)) %>%
     dplyr::mutate(
       n_samples = sum(n),
       rank = rank(dplyr::desc(n)),

@@ -27,3 +27,5 @@ Imports:
     magrittr,
     dplyr,
     tibble
+Depends: 
+    R (>= 2.10)
