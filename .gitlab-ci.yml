@@ -53,6 +53,7 @@ pages:
         - Rscript -e "pkgdown::build_site()"
     artifacts:
         paths:
+            - doc
             - public
         expire_in: 120 days
     only:
