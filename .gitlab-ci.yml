@@ -1,4 +1,4 @@
-image: rocker/tidyverse
+image: rocker/tidyverse:3.6.0
 
 stages:
   - build
@@ -8,6 +8,8 @@ stages:
 building:
   stage: build
   script:
+
+#    - R -e "remotes::install_bioc('')"
     - R -e "remotes::install_deps(dependencies = TRUE)"
     - R -e 'devtools::check()'
 
@@ -24,8 +26,8 @@ testing:
     only:
         - master
     script:
-#        - Rscript -e 'install.packages("DT")'
-#        - Rscript -e 'install.packages("RcppGreedySetCover")'
+        - Rscript -e 'install.packages("DT")'
+        - Rscript -e 'install.packages("RcppGreedySetCover")'
         - Rscript -e 'devtools::install()'
         - Rscript -e 'covr::gitlab(quiet = FALSE)'
     artifacts:
