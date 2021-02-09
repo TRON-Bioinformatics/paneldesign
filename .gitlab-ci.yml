@@ -24,8 +24,9 @@ testing:
     only:
         - master
     script:
-        - Rscript -e 'install.packages("DT")'
-        - Rscript -e 'install.packages("RcppGreedySetCover")'
+#        - Rscript -e 'install.packages("DT")'
+#        - Rscript -e 'install.packages("RcppGreedySetCover")'
+        - Rscript -e 'devtools::install()'
         - Rscript -e 'covr::gitlab(quiet = FALSE)'
     artifacts:
         paths:
