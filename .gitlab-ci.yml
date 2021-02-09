@@ -45,6 +45,8 @@ pages:
         - testing
     script:
         - ls
+        - Rscript -e "remotes::install_bioc('GenomicRanges')"
+        - Rscript -e 'install.packages("pkgdown")'
         - R -e "pkgdown::build_site()"
     artifacts:
         paths:
