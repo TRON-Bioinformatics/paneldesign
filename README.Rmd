@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of paneldesign is to provide functionality to help design good panels. 
+The goal of paneldesign is to provide functionalities to design and evaluate panels. 
 
 ## Installation
 
@@ -28,7 +28,7 @@ You can (not yet) install the released version of paneldesign from [CRAN](https:
 install.packages("paneldesign")
 ```
 
-But you can install the package from gitlab by
+But you can install the package from GitLab by
 
 ``` r
 remotes::install_git("gitlab.rlp.net:tron/paneldesign.git")
@@ -37,25 +37,77 @@ remotes::install_git("gitlab.rlp.net:tron/paneldesign.git")
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+This is a basic example to show you how to use the package:
 
 ```{r example}
 library(paneldesign)
 ## basic example code
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
+Given a data set of mutations in patients, the goal is to select mutations that are present in a maximum number of patients. 
+We use a toy data set consisting of patients `p1`, `p2`, and `p3` of which each has 3 mutations.
 
-```{r cars}
-summary(cars)
+```{r toy data}
+mut_toy
 ```
 
-You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date. `devtools::build_readme()` is handy for this. You could also use GitHub Actions to re-render `README.Rmd` every time you push. An example workflow can be found here: <https://github.com/r-lib/actions/tree/master/examples>.
 
-You can also embed plots, for example:
+### Select mutations
 
-```{r pressure, echo = FALSE}
-plot(pressure)
+Here, we use a greedy algorithm to select a minimal set of mutations that 
+covers all patients. 
+
+```{r}
+select_greedy(mut_toy)
 ```
 
-In that case, don't forget to commit and push the resulting figure files, so they display on GitHub and CRAN.
+This results in two mutations `m01` and `m02`.
+
+### Evaluate given panel of regions
+
+Here we use the following toy genomic region set.
+
+```{r}
+gr_toy
+```
+
+First, we associate each region to patients by overlap with the mutation data
+
+```{r}
+reg_to_patient <- panel_to_patient(gr_toy, mut_toy)
+
+reg_to_patient
+```
+
+This results in the above-shown data set. The patient `p3` is not *covered* 
+because there are no mutations in `p3` that overlap with the input regions. 
+This results in 'NA' values for some region or mutation-specific columns. 
+
+Next, we evaluate each region from the panel for the patient coverage.
+
+```{r}
+eval_regions(reg_to_patient)
+
+```
+
+This assumes some order of the input regions by decreasing priority and in this
+way outputs additionally cumulative values such as `percent_patients_cum` which 
+the cumulative percent of input patients that are covered by the current or any 
+previous region. This is useful to decide where to *cut* the panel.
+
+Lastly, we can get some overall performance metrics of the entire panel:
+
+```{r}
+eval <- eval_panel(reg_to_patient)
+eval
+```
+
+This data set contains a nested data set with information on how many mutations 
+each patient has represented on the panel.
+
+```{r}
+eval$mut_per_patient_df[[1]]
+
+```
+
+
