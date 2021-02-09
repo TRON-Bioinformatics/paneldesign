@@ -1,4 +1,4 @@
-image: rocker/tidyverse:3.6.0
+image: rocker/tidyverse
 
 stages:
   - build
@@ -9,7 +9,7 @@ building:
   stage: build
   script:
 
-#    - R -e "remotes::install_bioc('')"
+    - R -e "remotes::install_bioc('GenomicRanges')"
     - R -e "remotes::install_deps(dependencies = TRUE)"
     - R -e 'devtools::check()'
 
