@@ -5,7 +5,7 @@
 \alias{mut_toy}
 \title{A toy example data set linking patients to mutations.}
 \format{
-A data frame with rows and 5 colums:
+A data frame with rows and 5 columns:
 \describe{
 \item{patient_id}{patient ID}
 \item{mut_id}{unique mutation ID}

@@ -1,14 +1,20 @@
 
 
-#' Select mutaitons by maximal coverage
+#' Select mutations by maximal coverage
 #'
 #' @param set_df A dataset of mutations (sets) in patients. Each line is an
-#'           occuracne of a mutation in a patient.
+#'           occurrence of a mutation in a patient.
 #' @param mut_col Character for column name of the mutation identifier (set)
 #' @param sample_col Character for column name of the sample identifier (elements in set)
 #'
-#' @return a [tibble][tibble::tibble-package] with the selected mutations (sets), number and coverge of the mutaitons
+#' @return a [tibble][tibble::tibble-package] with the selected mutations (sets), number and coverage of the mutations
 #'
+#' @examples
+#' mut_toy
+#'
+#' select_greedy(mut_toy)
+#'
+#' @export
 select_greedy <- function(set_df, mut_col = "mut_id",
                           sample_col = "patient_id"){
 
