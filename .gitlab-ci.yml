@@ -51,12 +51,9 @@ pages:
         - Rscript -e 'devtools::install()'
         - Rscript -e 'install.packages("pkgdown")'
         - Rscript -e "pkgdown::build_site()"
-        - mkdir .public
-        - cp -r * .public
-        - mv .public public
+        - cp -r * public
     artifacts:
         paths:
-            - doc
             - public
         expire_in: 120 days
     only:
