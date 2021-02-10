@@ -51,7 +51,7 @@ pages:
         - Rscript -e 'devtools::install()'
         - Rscript -e 'install.packages("pkgdown")'
         - Rscript -e "pkgdown::build_site()"
-        - cp -r * public
+        - cp -r docs/* public
     artifacts:
         paths:
             - public
