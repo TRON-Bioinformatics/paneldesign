@@ -1,4 +1,4 @@
-image: rocker/tidyverse
+image: bioconductor/bioconductor_docker
 
 stages:
   - build
