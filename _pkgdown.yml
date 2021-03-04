@@ -1,1 +1,16 @@
 url: https://tron.pages.gitlab.rlp.net/paneldesign
+
+reference:
+- title: "Panel design"
+  desc: "Functions to optimize genomic region panels"
+- contents:
+  - select_greedy
+- title: "Evaluate"
+  desc: "Functions for evaluating given panels"
+- contents:
+  - panel_to_patient
+  - starts_with("eval_")
+- title: "Data"
+  desc: "Toy example datasets"
+- contents:
+  - ends_with("_toy")
