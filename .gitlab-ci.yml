@@ -8,8 +8,6 @@ stages:
 building:
   stage: build
   script:
-    # explicitly install Bioconductor dependencies
-    - R -e "remotes::install_bioc('GenomicRanges')"
     - R -e "remotes::install_deps(dependencies = TRUE)"
     - R -e 'devtools::check()'
 
@@ -26,10 +24,6 @@ testing:
     only:
         - master
     script:
-        # explicitly install Bioconductor dependencies
-        - Rscript -e "remotes::install_bioc('GenomicRanges')"
-        - Rscript -e 'install.packages("DT")'
-        - Rscript -e 'install.packages("RcppGreedySetCover")'
         - Rscript -e 'devtools::install()'
         - Rscript -e 'covr::gitlab(quiet = FALSE)'
     artifacts:
@@ -45,9 +39,6 @@ pages:
         - testing
     script:
         - ls
-        - Rscript -e "remotes::install_bioc('GenomicRanges')"
-        - Rscript -e 'install.packages("DT")'
-        - Rscript -e 'install.packages("RcppGreedySetCover")'
         - Rscript -e 'devtools::install()'
         - Rscript -e 'install.packages("pkgdown")'
         - Rscript -e "pkgdown::build_site()"
