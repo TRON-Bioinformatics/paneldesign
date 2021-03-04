@@ -7,24 +7,42 @@
 
 <!-- badges: end -->
 
-The goal of paneldesign is to provide functionalities to design and
+The goal of this R package is to provide functionalities to design and
 evaluate panels.
 
 <https://tron.pages.gitlab.rlp.net/paneldesign>
 
 ## Installation
 
-You can (not yet) install the released version of paneldesign from
-[CRAN](https://CRAN.R-project.org) with:
+### Install Bioconductor dependencies
+
+This package dependes on the Biocondocr packages
+[GenomicRanges](https://bioconductor.org/packages/release/bioc/html/GenomicRanges.html)
+and
+[GenomeInfoDb](https://bioconductor.org/packages/release/bioc/html/GenomeInfoDb.html).
+Install it by
 
 ``` r
-install.packages("paneldesign")
+install.packages("BiocManager") # if needed
+BiocManager::install(c("GenomicRanges", "GenomeInfoDb"))
 ```
 
-But you can install the package from GitLab by
+### Install this package from this GitLab
+
+This R packge is not yet on [CRAN](https://CRAN.R-project.org) or
+[Biodonducotr](https://www.bioconductor.org/). Therfore, you have to
+install it form this GitLap repository.
+
+However, this repository is a private GitLab reposoritory and therfore
+you have to create an personal access token (PAT) first. This is
+described
+[here](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html).
+As Scope use `api` or `read_api`.
 
 ``` r
-remotes::install_git("gitlab.rlp.net:tron/paneldesign.git")
+install.packages("remotes") # if needed
+
+remotes::install_gitlab("tron/paneldesign", host = "gitlab.rlp.net", auth_token = "YOUR_ACCESS_TOKEN")
 ```
 
 ## Example
@@ -33,7 +51,6 @@ This is a basic example to show you how to use the package:
 
 ``` r
 library(paneldesign)
-library(GenomicRanges)
 ```
 
 Given a data set of mutations in patients, the goal is to select
@@ -80,6 +97,36 @@ Here we use the following toy genomic region set.
 
 ``` r
 gr_toy
+#> Loading required package: GenomicRanges
+#> Loading required package: stats4
+#> Loading required package: BiocGenerics
+#> Loading required package: parallel
+#> 
+#> Attaching package: 'BiocGenerics'
+#> The following objects are masked from 'package:parallel':
+#> 
+#>     clusterApply, clusterApplyLB, clusterCall, clusterEvalQ,
+#>     clusterExport, clusterMap, parApply, parCapply, parLapply,
+#>     parLapplyLB, parRapply, parSapply, parSapplyLB
+#> The following objects are masked from 'package:stats':
+#> 
+#>     IQR, mad, sd, var, xtabs
+#> The following objects are masked from 'package:base':
+#> 
+#>     anyDuplicated, append, as.data.frame, basename, cbind, colnames,
+#>     dirname, do.call, duplicated, eval, evalq, Filter, Find, get, grep,
+#>     grepl, intersect, is.unsorted, lapply, Map, mapply, match, mget,
+#>     order, paste, pmax, pmax.int, pmin, pmin.int, Position, rank,
+#>     rbind, Reduce, rownames, sapply, setdiff, sort, table, tapply,
+#>     union, unique, unsplit, which, which.max, which.min
+#> Loading required package: S4Vectors
+#> 
+#> Attaching package: 'S4Vectors'
+#> The following object is masked from 'package:base':
+#> 
+#>     expand.grid
+#> Loading required package: IRanges
+#> Loading required package: GenomeInfoDb
 #> GRanges object with 2 ranges and 0 metadata columns:
 #>      seqnames    ranges strand
 #>         <Rle> <IRanges>  <Rle>

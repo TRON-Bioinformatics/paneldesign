@@ -18,22 +18,40 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of paneldesign is to provide functionalities to design and evaluate panels. 
+The goal of this R package is to provide functionalities to design and evaluate panels. 
 
 https://tron.pages.gitlab.rlp.net/paneldesign
 
 ## Installation
 
-You can (not yet) install the released version of paneldesign from [CRAN](https://CRAN.R-project.org) with:
+### Install Bioconductor dependencies
+
+This package dependes on the Biocondocr packages [GenomicRanges](https://bioconductor.org/packages/release/bioc/html/GenomicRanges.html) and
+[GenomeInfoDb](https://bioconductor.org/packages/release/bioc/html/GenomeInfoDb.html). 
+Install it by 
 
 ``` r
-install.packages("paneldesign")
+install.packages("BiocManager") # if needed
+BiocManager::install(c("GenomicRanges", "GenomeInfoDb"))
 ```
 
-But you can install the package from GitLab by
+### Install this package from this GitLab
+
+
+This R packge is not yet on [CRAN](https://CRAN.R-project.org) or
+[Biodonducotr](https://www.bioconductor.org/). Therfore, you have to install it
+form this GitLap repository. 
+
+However, this repository is a private GitLab reposoritory and therfore you have to 
+create an personal access token (PAT) first. This is described [here](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html).
+As Scope use `api` or `read_api`.  
+
 
 ``` r
-remotes::install_git("gitlab.rlp.net:tron/paneldesign.git")
+install.packages("remotes") # if needed
+
+remotes::install_gitlab("tron/paneldesign", host = "gitlab.rlp.net", auth_token = "YOUR_ACCESS_TOKEN")
+
 ```
 
 
@@ -43,7 +61,6 @@ This is a basic example to show you how to use the package:
 
 ```{r example, message = FALSE}
 library(paneldesign)
-library(GenomicRanges)
 
 ```
 
