@@ -45,11 +45,12 @@ install.packages("remotes") # if needed
 remotes::install_gitlab("tron/paneldesign", host = "gitlab.rlp.net", auth_token = "YOUR_ACCESS_TOKEN")
 ```
 
-## Example
+## Usage example
 
 This is a basic example to show you how to use the package:
 
 ``` r
+library(GenomicRanges)
 library(paneldesign)
 ```
 
@@ -97,36 +98,6 @@ Here we use the following toy genomic region set.
 
 ``` r
 gr_toy
-#> Loading required package: GenomicRanges
-#> Loading required package: stats4
-#> Loading required package: BiocGenerics
-#> Loading required package: parallel
-#> 
-#> Attaching package: 'BiocGenerics'
-#> The following objects are masked from 'package:parallel':
-#> 
-#>     clusterApply, clusterApplyLB, clusterCall, clusterEvalQ,
-#>     clusterExport, clusterMap, parApply, parCapply, parLapply,
-#>     parLapplyLB, parRapply, parSapply, parSapplyLB
-#> The following objects are masked from 'package:stats':
-#> 
-#>     IQR, mad, sd, var, xtabs
-#> The following objects are masked from 'package:base':
-#> 
-#>     anyDuplicated, append, as.data.frame, basename, cbind, colnames,
-#>     dirname, do.call, duplicated, eval, evalq, Filter, Find, get, grep,
-#>     grepl, intersect, is.unsorted, lapply, Map, mapply, match, mget,
-#>     order, paste, pmax, pmax.int, pmin, pmin.int, Position, rank,
-#>     rbind, Reduce, rownames, sapply, setdiff, sort, table, tapply,
-#>     union, unique, unsplit, which, which.max, which.min
-#> Loading required package: S4Vectors
-#> 
-#> Attaching package: 'S4Vectors'
-#> The following object is masked from 'package:base':
-#> 
-#>     expand.grid
-#> Loading required package: IRanges
-#> Loading required package: GenomeInfoDb
 #> GRanges object with 2 ranges and 0 metadata columns:
 #>      seqnames    ranges strand
 #>         <Rle> <IRanges>  <Rle>
@@ -203,4 +174,52 @@ eval$mut_per_patient_df[[1]]
 #> 1 p1                         2
 #> 2 p2                         1
 #> 3 p3                         0
+```
+
+### Structural variants
+
+Structural variants (SVs) are represented as pairs of breakpoint
+coordinates. And to be covered by a panel region either a single
+(`sv_mode = "single"`) or both (`sv_mode = "both"`) breakpoints must be
+included in a region of the panel.
+
+An toy example SV dataset might look like this
+
+``` r
+sv_toy
+#> # A tibble: 2 x 6
+#>   patient_id mut_id bp1_chr bp1_pos bp2_chr bp2_pos
+#>   <chr>      <chr>  <chr>     <dbl> <chr>     <dbl>
+#> 1 p4         sv01   1          1000 1          1500
+#> 2 p5         sv02   1          2000 2          2000
+```
+
+We can evaluate a dataset with mutations and SVs by passing it as
+additional input to the `panel_to_patient()`
+function
+
+``` r
+reg_to_patient <- panel_to_patient(gr_toy, mut_toy, sv_toy, sv_mode = "single")
+```
+
+Now the `reg_to_patient` table includes additonal colums for the SV
+breakpoint coordinates and includes here an association of SV `sv01`
+from patient `p4` with region `r1`. In contrast patient `p5`is not
+covered by the panel.
+
+``` r
+reg_to_patient
+#> # A tibble: 9 x 13
+#>   reg_id reg_chr reg_start reg_end mut_id patient_id chr   start   end bp1_chr
+#>   <chr>  <chr>       <int>   <int> <chr>  <chr>      <chr> <dbl> <dbl> <chr>  
+#> 1 r1     1            1000    1000 m01    p1         1      1000  1000 <NA>   
+#> 2 r1     1            1000    1000 m01    p2         1      1000  1000 <NA>   
+#> 3 r1     1            1000    1000 m01    p1         1      1000  1000 <NA>   
+#> 4 r1     1            1000    1000 m01    p2         1      1000  1000 <NA>   
+#> 5 r3     2            3000    3000 m03    p1         2      3000  3000 <NA>   
+#> 6 r1     1            1000    1000 sv01   p4         <NA>     NA    NA 1      
+#> 7 r3     2            3000    3000 <NA>   <NA>       <NA>     NA    NA <NA>   
+#> 8 <NA>   <NA>           NA      NA <NA>   p3         <NA>     NA    NA <NA>   
+#> 9 <NA>   <NA>           NA      NA <NA>   p5         <NA>     NA    NA <NA>   
+#> # … with 3 more variables: bp1_pos <dbl>, bp2_chr <chr>, bp2_pos <dbl>
 ```

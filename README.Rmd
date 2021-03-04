@@ -55,11 +55,12 @@ remotes::install_gitlab("tron/paneldesign", host = "gitlab.rlp.net", auth_token 
 ```
 
 
-## Example
+## Usage example
 
 This is a basic example to show you how to use the package:
 
 ```{r example, message = FALSE}
+library(GenomicRanges)
 library(paneldesign)
 
 ```
@@ -130,4 +131,33 @@ eval$mut_per_patient_df[[1]]
 
 ```
 
+
+### Structural variants
+
+Structural variants (SVs) are represented as pairs of breakpoint coordinates. And to 
+be covered by a panel region either a single (`sv_mode = "single"`) or both 
+(`sv_mode = "both"`) breakpoints must be included in a region of the panel. 
+
+An toy example SV dataset might look like this
+
+
+```{r}
+sv_toy
+```
+
+We can evaluate a dataset with mutations and SVs by passing it as additional input
+to the `panel_to_patient()` function
+
+```{r}
+reg_to_patient <- panel_to_patient(gr_toy, mut_toy, sv_toy, sv_mode = "single")
+
+```
+
+Now the `reg_to_patient` table includes additonal colums for the SV breakpoint 
+coordinates and includes here an association of SV `sv01` from patient `p4` with 
+region `r1`. In contrast patient `p5`is not covered by the panel.
+
+```{r}
+reg_to_patient
+```
 

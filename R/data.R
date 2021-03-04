@@ -22,3 +22,19 @@
 #'
 #' @source made up
 "gr_toy"
+
+#' A toy example data set linking patients to structural variants
+#'
+#'
+#' @format A data frame with rows and 5 columns:
+#' \describe{
+#'   \item{patient_id}{patient ID}
+#'   \item{mut_id}{unique mutation ID}
+#'   \item{bp1_chr}{chromosome name of breakpoint 1}
+#'   \item{bp1_pos}{Position of breakpoint 1}
+#'   \item{bp2_chr}{chromosome name of breakpoint 2}
+#'   \item{bp2_pos}{Position of breakpoint 2}
+#' }
+#' @source made up
+"sv_toy"
+

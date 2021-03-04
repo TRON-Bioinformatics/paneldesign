@@ -4,7 +4,7 @@
 \alias{panel_to_patient}
 \title{Get mapping of panel regions to covered patients and mutations.}
 \usage{
-panel_to_patient(reg_gr, mut)
+panel_to_patient(reg_gr, mut, sv = NULL, sv_mode = "single")
 }
 \arguments{
 \item{reg_gr}{A GRanges object with regions defining the panel. Should have
@@ -19,6 +19,20 @@ cohort of interest. Should have the following columns:
 \item \code{start}
 \item \code{end}
 }}
+
+\item{sv}{A data.frame like object with all structural variations and patients of the
+cohort of interest. Should have the following columns:
+\itemize{
+\item \code{patient_id}
+\item \code{mut_id}
+\item \code{bp1_chr}
+\item \code{bp1_pos}
+\item \code{bp2_chr}
+\item \code{bp1_chr}
+}}
+
+\item{sv_mode}{A character specifing if both brekapoints need to be coverd
+("both") or a single breakpoint is sufficient ("single")}
 }
 \value{
 A data set mapping the regions to affected patients and mutations.
