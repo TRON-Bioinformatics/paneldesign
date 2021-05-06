@@ -30,7 +30,8 @@ Imports:
     GenomicRanges,
     GenomeInfoDb,
     IRanges,
-    stringr
+    stringr,
+    S4Vectors
 Remotes: bioc::IRanges, bioc::GenomicRanges, bioc::GenomeInfoDb
 Depends: 
     R (>= 2.10)
