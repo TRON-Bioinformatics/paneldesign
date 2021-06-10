@@ -1,6 +1,12 @@
 #' Run mutation region definition and annotation
 #'
-#' @param mut a data.frame like object with mutations
+#' @param mut A data.frame like object with all mutations and patients of the
+#'   cohort of interest. Should have the following columns:
+#'    - `patient_id`
+#'    - `mut_id`
+#'    - `chr`
+#'    - `start`
+#'    - `end`
 #'
 #' @import dplyr
 #'
