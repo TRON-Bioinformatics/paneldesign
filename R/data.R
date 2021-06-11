@@ -8,6 +8,7 @@
 #'   \item{chr}{chromosome name}
 #'   \item{start}{start coordinate of the mutation}
 #'   \item{end}{end coordinate of the mutation}
+#'   \item{gene}{a gene identifier}
 #' }
 #' @source made up
 "mut_toy"
