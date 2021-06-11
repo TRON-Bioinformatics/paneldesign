@@ -39,6 +39,9 @@
 #' @export
 panel_to_patient <- function(reg_gr, mut, sv = NULL, sv_mode = "single"){
 
+  stopifnot("start" %in% names(mut) | "pos" %in% names(mut) )
+  stopifnot("end" %in% names(mut) | "pos" %in% names(mut) )
+
   # check input arguments
   stopifnot(sv_mode %in% c("both", "single"))
 
