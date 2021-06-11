@@ -5,11 +5,17 @@ reference:
   desc: "Functions to optimize genomic region panels"
 - contents:
   - select_greedy
+  - reduce_panel
 - title: "Evaluate"
   desc: "Functions for evaluating given panels"
 - contents:
   - panel_to_patient
   - starts_with("eval_")
+- title: "Mutation and ranges"
+  desc: "Functions to work with mutation data and genomic ranges"
+- contents:
+  - mut_to_gr
+  - mut_to_reg_gr
 - title: "Data"
   desc: "Toy example datasets"
 - contents:
