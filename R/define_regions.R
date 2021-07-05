@@ -11,6 +11,8 @@
 #'    - `end` or `pos`
 #' @param reg_size integer size of the region around mutations
 #'
+#' @return A GenomicRanges::GRanges() object with regions.
+#'
 #' @examples
 #' data(mut_toy)
 #' mut_to_reg_gr(mut_toy)
@@ -80,5 +82,34 @@ mut_to_gr <- function(mut){
                                    IRanges::IRanges(mut$pos, mut$pos),
                                    name = mut$mut_id)
   return(mut_gr)
+}
+
+
+
+#' Get all exons as GRanges object
+#'
+#' @param edb An Ensbel database object (EnsDb for Ensembl), e.g. from EnsDb.Hsapiens.v75
+#' @param columns Annotation columns. See `ensembldb::exons()`
+#' @param ... Additional paramters passed to `ensembldb::exons()`
+#'
+#' @return A GenomicRanges::GRanges() object with regions.
+#'
+#' @examples
+#' require(EnsDb.Hsapiens.v75)
+#' edb <- EnsDb.Hsapiens.v75
+#' get_exons(edb)
+#'
+#' @export
+get_exons <- function(edb, columns = c("tx_id", "gene_id", "symbol", "gene_name"), ...){
+
+  ex <- ensembldb::exons(edb,
+              columns = columns,
+              ...)
+
+  # change seqlevel style (to havae "chr1" instead of "1")
+  GenomeInfoDb::seqlevelsStyle(ex) <- "UCSC"
+
+  return(ex)
+
 }
 

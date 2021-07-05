@@ -3,6 +3,7 @@
 export("%>%")
 export(eval_panel)
 export(eval_regions)
+export(get_exons)
 export(mut_to_gr)
 export(mut_to_reg_gr)
 export(panel_to_patient)

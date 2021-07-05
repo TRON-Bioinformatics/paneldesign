@@ -7,5 +7,6 @@ utils::globalVariables(c("end", "median", "mut_id", "mut_indicator",
                          "n_patient", "n_patients_cum", "n_samples",
                          "patient_counter", "patient_id", "queryHits",
                          "reg_chr", "reg_end", "reg_id", "reg_size",
-                         "reg_start", "start", "subjectHits", "total_patients"))
+                         "reg_start", "start", "subjectHits", "total_patients",
+                         "chr", "pos", "mut_pos_id", "mut_pos_name"))
 

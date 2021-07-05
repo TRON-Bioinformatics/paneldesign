@@ -19,7 +19,9 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 Suggests: 
     testthat (>= 3.0.0),
-    spelling
+    spelling,
+    EnsDb.Hsapiens.v75,
+    AnnotationFilter
 Config/testthat/edition: 3
 Language: en-US
 Imports: 
@@ -31,7 +33,8 @@ Imports:
     GenomeInfoDb,
     IRanges,
     stringr,
-    S4Vectors
+    S4Vectors,
+    ensembldb
 Remotes: bioc::IRanges, bioc::GenomicRanges, bioc::GenomeInfoDb
 Depends: 
     R (>= 2.10)

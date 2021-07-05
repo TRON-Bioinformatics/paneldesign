@@ -19,6 +19,9 @@ cohort of interest. Should have the following columns:
 
 \item{reg_size}{integer size of the region around mutations}
 }
+\value{
+A GenomicRanges::GRanges() object with regions.
+}
 \description{
 Create unique regions of fixed size around mutations as GRanges
 }
