@@ -31,7 +31,7 @@ mut_to_reg_gr <- function(mut, reg_size = 100){
     mut$pos <- mut$start
   }
 
-  # take unique mutation positions (by keeping Gene annotations) -----------------
+  # take unique mutation positions (by keeping Gene annotations)
   mut_pos <- mut %>%
     distinct(chr, pos) %>%
     mutate(
@@ -98,6 +98,10 @@ mut_to_gr <- function(mut){
 #' require(EnsDb.Hsapiens.v75)
 #' edb <- EnsDb.Hsapiens.v75
 #' get_exons(edb)
+#'
+#' # get exons for specifc genes:
+#' get_exons(edb, filter = SymbolFilter(c("TP53", "BRAF")))
+#'
 #'
 #' @export
 get_exons <- function(edb, columns = c("tx_id", "gene_id", "symbol", "gene_name"), ...){

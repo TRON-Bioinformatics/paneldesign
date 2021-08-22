@@ -24,4 +24,8 @@ require(EnsDb.Hsapiens.v75)
 edb <- EnsDb.Hsapiens.v75
 get_exons(edb)
 
+# get exons for specifc genes:
+get_exons(edb, filter = SymbolFilter(c("TP53", "BRAF")))
+
+
 }
