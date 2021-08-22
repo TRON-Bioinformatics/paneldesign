@@ -35,11 +35,7 @@ Imports:
     stringr,
     S4Vectors,
     ensembldb
-Remotes: 
-  bioc::IRanges, 
-  bioc::GenomicRanges, 
-  bioc::GenomeInfoDb, 
-  bioc::EnsDb.Hsapiens.v75
 Depends: 
     R (>= 2.10)
+biocViews: Sequencing
 URL: https://tron.pages.gitlab.rlp.net/paneldesign, https://gitlab.rlp.net/tron/paneldesign
