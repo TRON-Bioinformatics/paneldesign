@@ -25,8 +25,11 @@
 #' @export
 reduce_panel <- function(reg_gr, target_gr, min_size = 100){
 
+  # reduce target regiosn to non-overlapping regions
+  target_gr_red <- GenomicRanges::reduce(target_gr)
+
   # compute pairs by any overlap
-  pairs <- IRanges::findOverlapPairs(reg_gr, target_gr, ignore.strand = TRUE)
+  pairs <- IRanges::findOverlapPairs(reg_gr, target_gr_red, ignore.strand = TRUE)
 
   # restrict to pairwise intersecting bases
   reduced <- IRanges::pintersect(pairs, ignore.strand = TRUE)
@@ -35,8 +38,8 @@ reduce_panel <- function(reg_gr, target_gr, min_size = 100){
   size <- S4Vectors::width(reduced)
 
   # build results by
-  #  - large enogh intersected regions and
-  #  - the origianl regions if smaller than min_size
+  #  - large enough intersected regions and
+  #  - unchanged overlapping regions if smaller than min_size
   result <- c(
     reduced[size >= min_size],
     S4Vectors::first(pairs)[size < min_size]
