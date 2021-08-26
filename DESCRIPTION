@@ -1,6 +1,6 @@
 Package: paneldesign
 Title: Design and evaluate panels of genes or genomic regions
-Version: 0.1.4
+Version: 0.1.5
 Authors@R: 
     person(given = "Jonas",
            family = "Ibn-Salem",
