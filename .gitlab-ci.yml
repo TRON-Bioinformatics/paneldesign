@@ -1,4 +1,4 @@
-image: rocker/tidyverse
+image: bioconductor/bioconductor_docker:RELEASE_3_13
 
 stages:
   - build
@@ -9,7 +9,6 @@ building:
   stage: build
   script:
     - R -e "remotes::install_deps(dependencies = TRUE)"
-    - R -e 'devtools::check()'
 
 # To have the coverage percentage appear as a gitlab badge follow these
 # instructions:
@@ -25,6 +24,7 @@ testing:
         - master
     script:
         - Rscript -e 'devtools::install()'
+        - R -e 'devtools::check()'
         - Rscript -e 'install.packages("covr")'
         - Rscript -e 'install.packages("DT")'
         - Rscript -e 'covr::gitlab(quiet = FALSE)'
