@@ -26,7 +26,7 @@
 reduce_panel <- function(reg_gr, target_gr, min_size = 100){
 
   # reduce target regiosn to non-overlapping regions
-  target_gr_red <- GenomicRanges::reduce(target_gr)
+  target_gr_red <- GenomicRanges::reduce(target_gr, ignore.strand = TRUE)
 
   # compute pairs by any overlap
   pairs <- IRanges::findOverlapPairs(reg_gr, target_gr_red, ignore.strand = TRUE)
