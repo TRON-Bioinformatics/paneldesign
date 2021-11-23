@@ -23,7 +23,7 @@ testing:
     only:
         - master
     script:
-        - Rscript -e 'devtools::install()'
+        - Rscript -e 'devtools::install(dependencies = TRUE)'
         - R -e 'devtools::check()'
         - Rscript -e 'install.packages("covr")'
         - Rscript -e 'install.packages("DT")'
@@ -41,7 +41,7 @@ pages:
         - testing
     script:
         - ls
-        - Rscript -e 'devtools::install()'
+        - Rscript -e 'devtools::install(dependencies = TRUE)'
         - Rscript -e 'install.packages("pkgdown")'
         - Rscript -e "pkgdown::build_site()"
         - mkdir -p public
