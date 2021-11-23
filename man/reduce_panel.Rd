@@ -2,7 +2,7 @@
 % Please edit documentation in R/reduce_panel.R
 \name{reduce_panel}
 \alias{reduce_panel}
-\title{Reduce panel regions to input ranges by respecting a minimum region size.}
+\title{Reduce panel regions to input target ranges by respecting a minimum region size.}
 \usage{
 reduce_panel(reg_gr, target_gr, min_size = 100)
 }
@@ -13,10 +13,14 @@ reduce_panel(reg_gr, target_gr, min_size = 100)
 which the panel should be reduced.}
 
 \item{min_size}{integer size in bp as the minimal size an individual region
-can be reduced to.}
+can be reduced to.
+
+In cases where the overlapping part of an input region with a target region
+is smaller than \code{min_size}, the overlapping part will be resized to \code{min_size}
+by fixing the center of the overlapping part.}
 }
 \description{
-Reduce panel regions to input ranges by respecting a minimum region size.
+Reduce panel regions to input target ranges by respecting a minimum region size.
 }
 \examples{
 reg_gr <- GenomicRanges::GRanges(c(

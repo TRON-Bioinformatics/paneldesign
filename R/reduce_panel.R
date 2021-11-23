@@ -1,5 +1,5 @@
 
-#' Reduce panel regions to input ranges by respecting a minimum region size.
+#' Reduce panel regions to input target ranges by respecting a minimum region size.
 #'
 #' @param reg_gr A GRanges object with regions defining the panel.
 #'
@@ -8,6 +8,11 @@
 #'
 #' @param min_size integer size in bp as the minimal size an individual region
 #'  can be reduced to.
+#'
+#' In cases where the overlapping part of an input region with a target region
+#' is smaller than `min_size`, the overlapping part will be resized to `min_size`
+#' by fixing the center of the overlapping part.
+#'
 #'
 #' @examples
 #' reg_gr <- GenomicRanges::GRanges(c(
@@ -39,10 +44,10 @@ reduce_panel <- function(reg_gr, target_gr, min_size = 100){
 
   # build results by
   #  - large enough intersected regions and
-  #  - unchanged overlapping regions if smaller than min_size
+  #  - if smaller than min_size: resize overlapping regions to required min_size
   result <- c(
     reduced[size >= min_size],
-    S4Vectors::first(pairs)[size < min_size]
+    GenomicRanges::resize(reduced[size < min_size], min_size, fix = "center")
   )
 
   return(result)
