@@ -1,6 +1,6 @@
 Package: paneldesign
 Title: Design and evaluate panels of genes or genomic regions
-Version: 0.1.5
+Version: 0.1.6
 Authors@R: 
     person(given = "Jonas",
            family = "Ibn-Salem",
@@ -16,7 +16,7 @@ License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 Suggests: 
     testthat (>= 3.0.0),
     spelling,
