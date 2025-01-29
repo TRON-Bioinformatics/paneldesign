@@ -24,12 +24,7 @@ eval_regions <- function(reg_to_patient_mut){
   # basic region annotation
   unique_reg <- reg_to_patient_mut %>%
     filter(!is.na(reg_id)) %>%
-    distinct(reg_id, reg_chr, reg_start, reg_end) %>%
-    mutate(
-      n_region = row_number(),
-      reg_size = reg_end - reg_start + 1,
-      reg_size_cum = cumsum(reg_size)
-    )
+    distinct(reg_id, reg_chr, reg_start, reg_end)
 
   # total number of patients for each region
   reg_to_n_patient <- reg_to_patient_mut %>%
@@ -41,6 +36,16 @@ eval_regions <- function(reg_to_patient_mut){
     filter(!is.na(reg_id)) %>%
     distinct(reg_id, mut_id) %>%
     count(reg_id, name = "n_mut")
+
+  # sort regions by number of covered patients
+  unique_reg <- unique_reg %>%
+    left_join(reg_to_n_patient, by = "reg_id") %>%
+    arrange(desc(n_patient))  %>%
+    mutate(
+      n_region = row_number(),
+      reg_size = reg_end - reg_start + 1,
+      reg_size_cum = cumsum(reg_size)
+    )
 
   # cumulative number of patietns for each region
   reg_to_n_patient_cum <- reg_to_patient_mut %>%
