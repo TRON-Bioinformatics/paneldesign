@@ -19,15 +19,14 @@ knitr::opts_chunk$set(
 [![R-CMD-check](https://github.com/TRON-Private/paneldesign/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/TRON-Private/paneldesign/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
-The goal of this R package is to provide functionalities to design and evaluate panels. 
+The goal of this R package is to provide functionalists to design and evaluate panels. 
 
-https://tron.pages.gitlab.rlp.net/paneldesign
 
 ## Installation
 
 ### Install Bioconductor dependencies
 
-This package dependes on the Biocondocr packages [GenomicRanges](https://bioconductor.org/packages/release/bioc/html/GenomicRanges.html) and
+This package depended on the Biocondoctor packages [GenomicRanges](https://bioconductor.org/packages/release/bioc/html/GenomicRanges.html) and
 [GenomeInfoDb](https://bioconductor.org/packages/release/bioc/html/GenomeInfoDb.html). 
 Install it by 
 
@@ -36,23 +35,16 @@ install.packages("BiocManager") # if needed
 BiocManager::install(c("GenomicRanges", "GenomeInfoDb"))
 ```
 
-### Install this package from this GitLab
+### Install this package from this GitHub
 
 
-This R packge is not yet on [CRAN](https://CRAN.R-project.org) or
-[Biodonducotr](https://www.bioconductor.org/). Therfore, you have to install it
-form this GitLap repository. 
+This R package is not yet on [CRAN](https://CRAN.R-project.org) or
+[Biodonducotr](https://www.bioconductor.org/). Therefore, you have to install it
+form this GitHub repository. 
 
-However, this repository is a private GitLab reposoritory and therfore you have to 
-create an personal access token (PAT) first. This is described [here](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html).
-As Scope use `api` or `read_api`.  
-
-
-``` r
-install.packages("remotes") # if needed
-
-remotes::install_gitlab("tron/paneldesign", host = "gitlab.rlp.net", auth_token = "YOUR_ACCESS_TOKEN")
-
+```{r, eval = FALSE}
+# install.packages("remotes")
+remotes::install_github("TRON-Private/paneldesign")
 ```
 
 
