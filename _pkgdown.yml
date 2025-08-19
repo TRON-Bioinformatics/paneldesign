@@ -16,6 +16,7 @@ reference:
 - contents:
   - mut_to_gr
   - mut_to_reg_gr
+  - get_exons
 - title: "Data"
   desc: "Toy example datasets"
 - contents:
