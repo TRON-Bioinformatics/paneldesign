@@ -2,7 +2,6 @@
 ^\.Rproj\.user$
 ^LICENSE\.md$
 ^README\.Rmd$
-^\.gitlab-ci\.yml$
 ^data-raw$
 ^_pkgdown\.yml$
 ^docs$
