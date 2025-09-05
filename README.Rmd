@@ -19,7 +19,13 @@ knitr::opts_chunk$set(
 [![R-CMD-check](https://github.com/TRON-Private/paneldesign/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/TRON-Private/paneldesign/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
-The goal of this R package is to provide functionalists to design and evaluate panels. 
+This R package provides functions to design and evaluate seqsuencing panels. 
+A sequencing panel is a collection of genomic regions selected for targeted 
+sequencing, such as cancer hotspot mutations.
+Given a cohort of individuals with associated genomic features 
+(e.g., patients with somatic mutations), the typical objective is to design a 
+panel that captures the largest number of individuals while using the smallest 
+possible subset of features. 
 
 
 ## Installation
@@ -35,8 +41,7 @@ install.packages("BiocManager") # if needed
 BiocManager::install(c("GenomicRanges", "GenomeInfoDb"))
 ```
 
-### Install this package from this GitHub
-
+### Install this package from GitHub
 
 This R package is not yet on [CRAN](https://CRAN.R-project.org) or
 [Biodonducotr](https://www.bioconductor.org/). Therefore, you have to install it
@@ -44,7 +49,7 @@ form this GitHub repository.
 
 ```{r, eval = FALSE}
 # install.packages("remotes")
-remotes::install_github("TRON-Private/paneldesign")
+remotes::install_github("tron-bioinformatics/paneldesign")
 ```
 
 
