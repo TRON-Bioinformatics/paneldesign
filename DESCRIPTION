@@ -1,6 +1,6 @@
 Package: paneldesign
 Title: Design and evaluate panels of genes or genomic regions
-Version: 0.1.6
+Version: 0.2.0
 Authors@R: 
     person(given = "Jonas",
            family = "Ibn-Salem",
@@ -14,7 +14,7 @@ Description: This R package provides functions for designing sequencing panels.
     (e.g., patients with somatic mutations), the typical objective is to design a 
     panel that captures the largest number of individuals while using the smallest 
     possible subset of features. 
-License: GPL (>= 3)
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
