@@ -1,8 +1,10 @@
 <urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
 <url><loc>https://tron-bioinformatics.github.io/paneldesign/404.html</loc></url>
+<url><loc>https://tron-bioinformatics.github.io/paneldesign/LICENSE-text.html</loc></url>
 <url><loc>https://tron-bioinformatics.github.io/paneldesign/LICENSE.html</loc></url>
 <url><loc>https://tron-bioinformatics.github.io/paneldesign/authors.html</loc></url>
 <url><loc>https://tron-bioinformatics.github.io/paneldesign/index.html</loc></url>
+<url><loc>https://tron-bioinformatics.github.io/paneldesign/news/index.html</loc></url>
 <url><loc>https://tron-bioinformatics.github.io/paneldesign/reference/eval_panel.html</loc></url>
 <url><loc>https://tron-bioinformatics.github.io/paneldesign/reference/eval_regions.html</loc></url>
 <url><loc>https://tron-bioinformatics.github.io/paneldesign/reference/get_exons.html</loc></url>
