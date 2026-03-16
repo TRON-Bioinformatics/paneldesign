@@ -34,7 +34,7 @@ BiocManager::install(c("GenomicRanges", "GenomeInfoDb"))
 ### Install this package from GitHub
 
 This R package is not yet on [CRAN](https://CRAN.R-project.org) or
-[Biodonducotr](https://www.bioconductor.org/). Therefore, you have to
+[Bioconductor](https://www.bioconductor.org/). Therefore, you have to
 install it form this GitHub repository.
 
 ``` r
